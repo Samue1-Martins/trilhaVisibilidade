@@ -5,8 +5,9 @@ $(document).ready(function () {
         const clearHtml = $('.cardResult')
         clearHtml.html('')
 
-        const inputValue = $('.inputSearch').val();
+        const inputValue = $('.inputSearch').val()
         if (inputValue != "") {
+
             const valueString = inputValue.toLowerCase()
 
             $.ajax({
@@ -16,13 +17,16 @@ $(document).ready(function () {
             })
                 .then(function (data) {
                     console.log('Data received from API:', data)
-                    let wordResult = `
-                <p>Word: ${data[0].word}</p>
-                <p>Definition: ${data[0].meanings[0].definitions[0].definition}</p>`
+                    let wordResult = 
+                        `
+                        <p>Word: ${data[0].word}</p>
+                        <p>Definition: ${data[0].meanings[0].definitions[0].definition}</p>
+                        `
                     $('.cardResult').html(wordResult)
                     $('.inputSearch').css("border", "2px solid #6c63ff")
                     try {
-                        let phoneticsAudio = `
+                        let phoneticsAudio = 
+                        `
                         <h4>
                             Phonetics
                         </h4> 
@@ -32,16 +36,19 @@ $(document).ready(function () {
                         $('.audioPhonetics').html(phoneticsAudio)
                     } catch (error) {
                         console.error('Áudio indisponível:', error)
-                        let phoneticsAudio = `
+                        let phoneticsAudio = 
+                        `
                         <h4>
                             Áudio indisponível :(
-                        </h4> `
+                        </h4> 
+                        `
                         $('.audioPhonetics').html(phoneticsAudio)
                     }
                 })
                 .catch(function (error) {
                     console.log('Error fetching word data:', error)
-                    let searchError = `
+                    let searchError = 
+                    `
                     <p>Adicione uma palavra válida para realizar a pesquisa, não adicione caracteres no ato da busca.
                     Se não estiver achando a palavra desejada, não se esqueça de verificar a ortografia!
                     </p>
